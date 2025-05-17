@@ -20,13 +20,13 @@ git clone https://github.com/yourusername/student-registration-app.git
 ## 🔍 UI Screenshots
 
 ### 📝 Registration Form  
-![Registration Form](screenshots/Student Registration Form.png)
+![Registration Form](Screenshots/Student Registration Form.png)
 
 ### 📋 Student List  
-![Student List](screenshots/Students List.png)
+![Student List](Screenshots/Students List.png)
 
 ### ❌ Delete Student  
-![Delete Student](screenshots/Delete student data.png)
+![Delete Student](Screenshots/Delete student data.png)
 
 
 ### 1. Clone the repo
