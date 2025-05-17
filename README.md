@@ -23,7 +23,7 @@ git clone https://github.com/yourusername/student-registration-app.git
 ![Registration Form](Screenshots/Student Registration Form.png)
 
 ### 📋 Student List  
-![Student List](Screenshots/Students List.png)
+![Student List](https://github.com/spmishra667/Student_Registration/blob/0f25d89c0b9a799f27c183bde635f9f5ee81d8a3/Screenshots/Delete%20student%20data.png)
 
 ### ❌ Delete Student  
 ![Delete Student](Screenshots/Delete student data.png)
