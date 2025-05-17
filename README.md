@@ -17,16 +17,16 @@ A full-stack Java Spring Boot application to register, view, and delete student 
 ## Getting Started
 git clone https://github.com/yourusername/student-registration-app.git
 
-### 🔍 UI Screenshots
+## 🔍 UI Screenshots
 
-#### 📝 Registration Form
-![(https://github.com/spmishra667/Student_Registration/blob/main/Screenshots/Delete%20student%20data.png)]([screenshots/form_register.png])
+### 📝 Registration Form  
+![Registration Form](screenshots/Student Registration Form.png)
 
-#### 📋 Student List
-![Student List](screenshots/student_list.png)
+### 📋 Student List  
+![Student List](screenshots/Students List.png)
 
-#### ❌ Delete Student
-![Delete Student](screenshots/delete_function.png)
+### ❌ Delete Student  
+![Delete Student](screenshots/Delete student data.png)
 
 
 ### 1. Clone the repo
