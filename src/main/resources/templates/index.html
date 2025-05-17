@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Registration</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    form, table, .delete-section { margin-bottom: 30px; }
+    input, button { padding: 8px; margin: 5px 0; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+
+  <h2>Register Student</h2>
+  <form id="registerForm">
+    <input type="text" placeholder="Full Name" id="fullName" required><br>
+    <input type="text" placeholder="Roll Number" id="rollNumber" required><br>
+    <input type="text" placeholder="College Name" id="collegeName" required><br>
+    <input type="text" placeholder="Course Enrolled" id="courseEnrolled" required><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <h2>Delete Student by ID or Roll Number</h2>
+  <div class="delete-section">
+    <input type="text" id="deleteInput" placeholder="Enter Roll Number or ID">
+    <button onclick="deleteStudent()">Delete</button>
+  </div>
+
+  <h2>Registered Students</h2>
+  <table id="studentsTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Roll Number</th>
+        <th>College</th>
+        <th>Course</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+<script>
+  const API = "http://localhost:8080/students";
+
+  document.getElementById("registerForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const student = {
+      fullName: document.getElementById("fullName").value,
+      rollNumber: document.getElementById("rollNumber").value.trim(),
+      collegeName: document.getElementById("collegeName").value,
+      courseEnrolled: document.getElementById("courseEnrolled").value
+    };
+
+    await fetch(`${API}/register`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(student)
+    });
+
+    loadStudents();
+    this.reset();
+  });
+
+  async function loadStudents() {
+    const res = await fetch(`${API}/all`);
+    const students = await res.json();
+    
+    console.log("Loaded students from DB:", students);
+
+
+    const table = document.getElementById("studentsTable").getElementsByTagName("tbody")[0];
+    table.innerHTML = "";
+
+    students.forEach(s => {
+      const row = table.insertRow();
+      row.innerHTML = `
+        <td>${s.id}</td>
+        <td>${s.fullName}</td>
+        <td>${s.rollNumber}</td>
+        <td>${s.collegeName}</td>
+        <td>${s.courseEnrolled}</td>
+      `;
+    });
+  }
+
+  async function deleteStudent() {
+	  const input = document.getElementById("deleteInput").value.trim();
+
+	  if (!input) {
+	    alert("Please enter a Roll Number or ID");
+	    return;
+	  }
+
+	  // Send to a single endpoint which backend interprets
+	  const response = await fetch(`${API}/delete/${input}`, { method: "DELETE" });
+
+	  if (response.ok) {
+	    alert("Student deleted successfully");
+	    loadStudents();
+	    document.getElementById("deleteInput").value = "";
+	  } else if (response.status === 404) {
+	    alert("No data found");
+	  } else {
+	    alert("Failed to delete student");
+	  }
+	}
+
+
+
+  loadStudents();
+</script>
+
+</body>
+</html>
