@@ -15,9 +15,6 @@ A full-stack Java Spring Boot application to register, view, and delete student 
 - CORS enabled for frontend communication
 
 ## Getting Started
-
-### 1. Clone the repo
-```bash
 git clone https://github.com/yourusername/student-registration-app.git
 
 ### 🔍 UI Screenshots
@@ -30,3 +27,7 @@ git clone https://github.com/yourusername/student-registration-app.git
 
 #### ❌ Delete Student
 ![Delete Student](screenshots/delete_function.png)
+
+
+### 1. Clone the repo
+```bash
