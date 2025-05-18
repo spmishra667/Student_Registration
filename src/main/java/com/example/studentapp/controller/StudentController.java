@@ -24,7 +24,7 @@ public class StudentController {
             return new ResponseEntity<>(registeredStudent, HttpStatus.CREATED);
         } catch (Exception e) {
             // Log the exception
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null); // Note: update frontend to read message
         }
     }
 

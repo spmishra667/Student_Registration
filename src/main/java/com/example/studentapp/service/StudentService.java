@@ -20,6 +20,7 @@ public class StudentService {
             return studentRepository.save(student);
         } catch (DataIntegrityViolationException e) {
             // Handle data integrity issues, such as duplicate roll number
+        	System.out.println("Student roll Number already exists");
             throw new RuntimeException("Student with this Roll Number already exists");
         } catch (Exception e) {
             // Log the exception

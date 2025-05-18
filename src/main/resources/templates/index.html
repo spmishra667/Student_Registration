@@ -156,14 +156,24 @@
         courseEnrolled: document.getElementById("courseEnrolled").value
       };
 
-      await fetch(`${API}/register`, {
+    try {
+      const res = await fetch(`${API}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(student)
       });
+      
+      if (!res.ok) {
+          const errorText = await res.text();
+          alert("Student with this Roll Number already exists: " + errorText);  // This will show "Student with this Roll Number already exists"
+          return;
+        }
 
       loadStudents();
       this.reset();
+    } catch (err) {
+	  alert("An unexpected error occurred")
+	}    
     });
 
     async function loadStudents() {
